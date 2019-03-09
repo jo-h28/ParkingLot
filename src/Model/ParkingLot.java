@@ -43,7 +43,20 @@ public class ParkingLot {
     }
 
     public void searchRegistrationNumberByColor(String color){
-        
+        StringBuilder registrationNumbersBuilder = new StringBuilder();
+        for(Car car : parkingSlots){
+            if(car != null){
+                if(color.equals(car.getColor().name())){
+                    if(!registrationNumbersBuilder.toString().equals(""))
+                        registrationNumbersBuilder.append(", ");
+                    registrationNumbersBuilder.append(car.getRegistration_number());
+                }
+            }
+        }
+        if(registrationNumbersBuilder.toString().equals(""))
+            System.out.println("Not found");
+        else
+            System.out.println(registrationNumbersBuilder.toString());
     }
 
     public void searchSlotNumberByRegistrastionNumber(String registrationNumber){
