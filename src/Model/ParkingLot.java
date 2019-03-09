@@ -77,6 +77,19 @@ public class ParkingLot {
     }
 
     public void searchSlotNumberByColor(String color){
-
+        StringBuilder slotNumbersBuilder = new StringBuilder();
+        for(int i = 0; i < parkingSlots.length; ++i){
+            if(parkingSlots[i] != null){
+                if(color.equals(parkingSlots[i].getColor().name())){
+                    if(!slotNumbersBuilder.toString().equals(""))
+                        slotNumbersBuilder.append(", ");
+                    slotNumbersBuilder.append(i + 1);
+                }
+            }
+        }
+        if(slotNumbersBuilder.toString().equals(""))
+            System.out.println("Not found");
+        else
+            System.out.println(slotNumbersBuilder.toString());
     }
 }
