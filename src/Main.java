@@ -1,11 +1,35 @@
 import Model.ParkingLot;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-	    String input = "";
+        Scanner scanner = null;
+        File fileInput;
+        String input = null;
         ParkingLot PL = null;
-        do{
-            input = System.console().readLine();
+        if(args.length == 0) {
+            scanner = new Scanner(System.in);
+        }
+        else{
+            fileInput = new File(args[0]);
+            try {
+                scanner = new Scanner(fileInput);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        do {
+            if(scanner.hasNextLine())
+                input = scanner.nextLine();
+            else{
+                if(args.length != 0)
+                    break;
+                while(!scanner.hasNextLine());
+            }
             String[] params = input.split(" ");
             switch (params[0]) {
                 case "create_parking_lot":
@@ -35,8 +59,13 @@ public class Main {
                     if (PL != null)
                         PL.searchSlotNumberByRegistrastionNumber(params[1]);
                     break;
+                case "exit":
+                    break;
+                default:
+                    System.out.println("Command not recognized.");
+                    break;
             }
         }
-        while(!input.equals("exit"));
+        while (!input.equals("exit"));
     }
 }
