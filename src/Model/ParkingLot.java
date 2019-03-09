@@ -35,12 +35,12 @@ public class ParkingLot {
     }
 
     public void status(){
-        System.out.println("Slot No\tRegistration No\tColour");
+        System.out.println("Slot No.    Registration No    Colour");
         for(int i = 0; i < parkingSlots.length; ++i){
             if(parkingSlots[i] != null)
                 System.out.println((i + 1)
-                        + "\t" + parkingSlots[i].getRegistrationNumber()
-                        + "\t" + parkingSlots[i].getColor());
+                        + "           " + parkingSlots[i].getRegistrationNumber()
+                        + "      " + parkingSlots[i].getColor());
         }
     }
 
