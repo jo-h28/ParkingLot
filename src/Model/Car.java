@@ -1,20 +1,20 @@
 package Model;
 
 public class Car {
-    private String registration_number;
+    private String registrationNumber;
     private Color color;
 
-    public Car(String registration_number, Color color) {
-        this.registration_number = registration_number;
+    public Car(String registrationNumber, Color color) {
+        this.registrationNumber = registrationNumber;
         this.color = color;
     }
 
-    public String getRegistration_number() {
-        return registration_number;
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 
-    public void setRegistration_number(String registration_number) {
-        this.registration_number = registration_number;
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 
     public Color getColor() {
