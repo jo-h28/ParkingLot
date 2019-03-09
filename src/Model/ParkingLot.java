@@ -37,7 +37,7 @@ public class ParkingLot {
         for(int i = 0; i < parkingSlots.length; ++i){
             if(parkingSlots[i] != null)
                 System.out.println(i + 1
-                        + "\t" + parkingSlots[i].getRegistration_number()
+                        + "\t" + parkingSlots[i].getRegistrationNumber()
                         + "\t" + parkingSlots[i].getColor());
         }
     }
@@ -49,7 +49,7 @@ public class ParkingLot {
                 if(color.equals(car.getColor().name())){
                     if(!registrationNumbersBuilder.toString().equals(""))
                         registrationNumbersBuilder.append(", ");
-                    registrationNumbersBuilder.append(car.getRegistration_number());
+                    registrationNumbersBuilder.append(car.getRegistrationNumber());
                 }
             }
         }
@@ -60,7 +60,20 @@ public class ParkingLot {
     }
 
     public void searchSlotNumberByRegistrastionNumber(String registrationNumber){
-
+        StringBuilder slotNumbersBuilder = new StringBuilder();
+        for(int i = 0; i < parkingSlots.length; ++i){
+            if(parkingSlots[i] != null){
+                if(registrationNumber.equals(parkingSlots[i].getRegistrationNumber())){
+                    if(!slotNumbersBuilder.toString().equals(""))
+                        slotNumbersBuilder.append(", ");
+                    slotNumbersBuilder.append(i + 1);
+                }
+            }
+        }
+        if(slotNumbersBuilder.toString().equals(""))
+            System.out.println("Not found");
+        else
+            System.out.println(slotNumbersBuilder.toString());
     }
 
     public void searchSlotNumberByColor(String color){
