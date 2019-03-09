@@ -15,28 +15,30 @@ public class ParkingLot {
             System.out.println("Sorry, parking lot is full");
             return;
         }
-        Car new_car = new Car(registrationNumber, Color.valueOf(color));
+        Car newCar = new Car(registrationNumber, Color.valueOf(color));
         for(int i = 0; i < parkingSlots.length; ++i){
             if(parkingSlots[i] == null){
-                parkingSlots[i] = new_car;
+                parkingSlots[i] = newCar;
                 availableSlots--;
-                System.out.println("Allocated slot number: " + i + 1);
+                System.out.println("Allocated slot number: " + (i + 1));
                 break;
             }
         }
     }
 
     public void deallocateSlot(int slotNumber){
-        parkingSlots[slotNumber - 1] = null;
-        availableSlots--;
-        System.out.println("Slot number " + 4 + " is free");
+        if(parkingSlots[slotNumber - 1] != null) {
+            parkingSlots[slotNumber - 1] = null;
+            availableSlots++;
+        }
+        System.out.println("Slot number " + slotNumber + " is free");
     }
 
     public void status(){
-        System.out.println("Slot No.\tRegistration No\tColour");
+        System.out.println("Slot No\tRegistration No\tColour");
         for(int i = 0; i < parkingSlots.length; ++i){
             if(parkingSlots[i] != null)
-                System.out.println(i + 1
+                System.out.println((i + 1)
                         + "\t" + parkingSlots[i].getRegistrationNumber()
                         + "\t" + parkingSlots[i].getColor());
         }
