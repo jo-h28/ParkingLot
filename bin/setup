@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$( cd "$( dirname "$(dirname "${BASH_SOURCE[0]}")")" >/dev/null && pwd )"
 javac -cp $PROJECT_DIR src/Main.java src/Model/Color.java src/Model/Car.java src/Model/ParkingLot.java -d bin
+bin/run_functional_tests
